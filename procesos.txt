@@ -1,0 +1,20 @@
+(CREACION DEL PROYECTO)
+-laravel new jusavinc --jet
+
+(MAQUETACION DE LA BD)
+archivo en MySQL workbench
+
+(CREACION DE LAS MIGRACIONES, MODELOS, SEEDER y FACTORY)
+-php artisan make:model Category -msf
+!! IMPORTANTE !!
+siempre que tenga que crear una tabla intermedia en este caso seria la tabla 'brand' en el comando a ejecutar se debe agregar el nombre de los modelos (y siempre en nombre alfabetico):
+-php artisan make:migration create_brand_category_table
+
+(DESCARGA DE COMPONENTES DE JETSTREAM)
+-php artisan vendor:publish --tag=jetstream-views
+
+(foto de perfil)
+-jetstream.php
+
+(CREACION DEL COMPONENTE CARROUSEL LIVEWIRE)
+-php artisan make:livewire category-products
