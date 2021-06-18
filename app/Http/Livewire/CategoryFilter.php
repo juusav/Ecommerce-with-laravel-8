@@ -12,6 +12,8 @@ class CategoryFilter extends Component
     use WithPagination;
 
     public $category, $subcategoria, $marca;
+
+    public $view = 'list';
     
     public function render(){
         // $products = $this->category->products()

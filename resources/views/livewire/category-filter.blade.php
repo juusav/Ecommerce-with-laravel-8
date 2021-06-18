@@ -5,8 +5,8 @@
             <h1 class="font-semibold text-gray-700 uppercase">{{$category->name}}</h1>
 
             <div class="grid-grid-cols-2 border border-gray-200 divide-x divide-gray-200 text-gray-500">
-                <i class="fas fa-border-all p-3 cursor-pointer"></i>
-                <i class="fas fa-th-list p-3 cursor-pointer"></i>
+                <i class="fas fa-border-all p-3 cursor-pointer {{ $view == 'grid' ? 'text-blue-500' : '' }}"  wire:click="$set('view', 'grid')"></i>
+                <i class="fas fa-th-list p-3 cursor-pointer {{ $view == 'list' ? 'text-blue-500' : '' }}" wire:click="$set('view', 'list')"></i>
             </div>
         </div>
     </div>
@@ -52,26 +52,58 @@
                 {{$products->links()}}
             </div>
 
-            <ul class="grid grid-cols-4 gap-6">
-                @foreach ($products as $product)
-                    <li class="bg-white rounded-lg shadow">
-                        <article>
-                            <figure>
-                                <img src="{{ Storage::url($product->images->first()->url) }}" alt="">
-                            </figure>
+            @if ($view == 'grid')
+                
+                <ul class="grid grid-cols-4 gap-6">
+                    @foreach ($products as $product)
+                        <li class="bg-white rounded-lg shadow">
+                            <article>
+                                <figure>
+                                    <img src="{{ Storage::url($product->images->first()->url) }}" alt="">
+                                </figure>
 
-                            <div class="py-4 px-6">
-                                <h1 class="text-lg font-semibold">
-                                    <a href="">
-                                        {{Str::limit($product->name, 20)}}
-                                    </a>
-                                </h1>
-                                <p class="font-bold text-gray-600">{{$product->price}} €</p>
-                            </div>
-                        </article>
-                    </li>                    
-                @endforeach
-            </ul>
+                                <div class="py-4 px-6">
+                                    <h1 class="text-lg font-semibold">
+                                        <a href="">
+                                            {{Str::limit($product->name, 20)}}
+                                        </a>
+                                    </h1>
+                                    <p class="font-bold text-gray-600">{{$product->price}} €</p>
+                                </div>
+                            </article>
+                        </li>                    
+                    @endforeach
+                </ul>
+            @else
+                
+                <ul>
+                    @foreach ($products as $product)
+                        <li class="bg-white rounded-lg shadow mb-4">
+                            <article class="flex">
+                                <figure>
+                                    <img class="h-48 w-56 object-cover object-center" src="{{ Storage::url($product->images->first()->url) }}" alt="">
+                                </figure>
+
+                                <div class="flex-1 py-4 px-6 flex flex-col">
+                                    <div class="flex justify-between">
+                                        <div>
+                                            <h1 class="text-lg font-semibold text-gray-700">{{$product->name}}</h1>
+                                            <p class="font-bold text-gray-700">{{ $product->price }} €</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-auto mb-8">
+                                        <x-jet-danger-button>
+                                            Más información
+                                        </x-jet-danger-button>
+                                    </div>
+                                </div>
+                            </article>
+                        </li>
+                    @endforeach
+                </ul>    
+
+            @endif
 
             {{-- Paginate --}}
             <div class="mt-4">
