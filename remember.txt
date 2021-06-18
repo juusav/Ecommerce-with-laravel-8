@@ -1,0 +1,2 @@
+Product::query -> consulta
+whereHas: hacer consulta a relaciones
