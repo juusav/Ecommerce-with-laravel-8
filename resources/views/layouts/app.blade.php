@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.7/glider.min.css" integrity="sha512-YM6sLXVMZqkCspZoZeIPGXrhD9wxlxEF7MzniuvegURqrTGV2xTfqq1v9FJnczH+5OGFl5V78RgHZGaK34ylVg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="{{ mix('vendor/FlexSlider/flexsider.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/FlexSlider/flexslider.css') }}">
         @livewireStyles
 
         <!-- Scripts -->
@@ -42,6 +42,7 @@
         {{-- Solución desfaces --}}
         @stack('modals')
         @stack('slider')
+        @stack('script')
 
     </body>
 </html>

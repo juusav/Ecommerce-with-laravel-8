@@ -18,3 +18,6 @@ siempre que tenga que crear una tabla intermedia en este caso seria la tabla 'br
 
 (CREACION DEL COMPONENTE CARROUSEL LIVEWIRE)
 -php artisan make:livewire category-products
+
+(TRADUCIR FECHAS)
+-composer require jenssegers/date

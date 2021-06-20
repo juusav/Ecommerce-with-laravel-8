@@ -5,3 +5,6 @@ whereHas: hacer consulta a relaciones
 MODEL
 $guarded es lo contrario a $fillable, con $guarded asigno los campos que no quiero que se 
 asignen masivamente los demas campos se asignarán con normalidad.
+
+layout.app
+el stack es como un vatiable 
