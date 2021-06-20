@@ -37,4 +37,7 @@ class Product extends Model
         return $this->morphMany(Image::class, "imageable"); //Primer parametro establezco donde quiero que suceda y el segundo es la funcion  
     }
 
+    public function getRouteKeyName(){
+        return 'slug';
+    }
 }
