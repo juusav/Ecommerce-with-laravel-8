@@ -9,7 +9,7 @@ class AddCartItem extends Component
     public $product, $quantity;
     public $qty = 1;
 
-    public function mount(){
+    public function mount(){ //Método constructor se ejecutará una vez se haya cargado los productos
         $this->quantity = $this->product->quantity;
     }
 
