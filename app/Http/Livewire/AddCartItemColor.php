@@ -15,7 +15,12 @@ class AddCartItemColor extends Component
     public function mount(){
         $this->colors = $this->product->colors;
     }
-
+    public function decrement(){
+        $this->qty = $this->qty - 1;
+    }
+    public function increment(){
+        $this->qty = $this->qty + 1;
+    }
     public function render(){
         return view('livewire.add-cart-item-color');
     }
