@@ -6,8 +6,8 @@ use Livewire\Component;
 
 class DropdownCart extends Component
 {
-    public function render()
-    {
+    protected $listeners = ['render']; //Está a la escucha de lo que sucede en el evento AddCartItem
+    public function render(){
         return view('livewire.dropdown-cart');
     }
 }

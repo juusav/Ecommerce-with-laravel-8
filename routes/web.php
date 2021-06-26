@@ -13,3 +13,10 @@ Route::get('products/{product}', [ProductController::class, 'show'])->name('prod
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('prueba', function(){
+    \Cart::destroy();
+});
+
+
+//Me he quedado que no puedo sacar esta vainaaaaaaaaaaaaaaaa del cart porque creo que no funciona

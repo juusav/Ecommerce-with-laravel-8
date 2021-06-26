@@ -21,3 +21,6 @@ siempre que tenga que crear una tabla intermedia en este caso seria la tabla 'br
 
 (TRADUCIR FECHAS)
 -composer require jenssegers/date
+
+(INSTALACIÓN DE SHOPPINGCART)
+-composer require bumbummen99/shoppingcart
