@@ -3,7 +3,8 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Storage;
 class AddCartItemColor extends Component
 {
     public $product, $colors;
@@ -11,23 +12,40 @@ class AddCartItemColor extends Component
     public $color_id = "";
     public $qty = 1;
     public $quantity = 0;
+    public $options = [];
 
     public function mount(){
         $this->colors = $this->product->colors;
-    }
-    public function decrement(){
-        $this->qty = $this->qty - 1;
-    }
-    public function increment(){
-        $this->qty = $this->qty + 1;
-    }
-    public function render(){
-        return view('livewire.add-cart-item-color');
+        $this->options['image'] = Storage::url($this->product->images->first()->url);
     }
 
     // updated + el nombre de alguna propiedad Este trozo se ejecutará cada vez que se cambie el valor de la propiedad
-
     public function updatedColorId($value){
-        $this->quantity = $this->product->colors->find($value)->pivot->quantity;
+        $color = $this->product->colors->find($value);
+        $this->quantity = $color->pivot->quantity;
+        $this->options['color'] = $color->name;
+    }
+
+    public function decrement(){
+        $this->qty = $this->qty - 1;
+    }
+
+    public function increment(){
+        $this->qty = $this->qty + 1;
+    }
+    
+    public function addItem(){
+        Cart::add(['id' => $this->product->id,
+                    'name' => $this->product->name,
+                    'qty' => $this->qty,
+                    'price' => $this->product->price,
+                    'weight' => 550,
+                    'options' => $this->options
+                ]);
+        $this->emitTo('dropdown-cart', 'render'); //  Para un componente el evento será emitto. Se envia al componente Dropdown
+    }
+    
+    public function render(){
+        return view('livewire.add-cart-item-color');
     }
 }

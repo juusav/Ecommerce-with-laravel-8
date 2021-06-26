@@ -7,4 +7,4 @@ $guarded es lo contrario a $fillable, con $guarded asigno los campos que no quie
 asignen masivamente los demas campos se asignarán con normalidad.
 
 layout.app
-el stack es como un vatiable 
+el stack es como una variable 

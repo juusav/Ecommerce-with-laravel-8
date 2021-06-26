@@ -5,7 +5,7 @@
          class="form-control w-full">
         <option value="" selected disabled>Seleccionar color</option>
         @foreach ($colors as $color)
-            <option value="{{$color->id}}">{{$color->name}}</option>
+            <option value="{{$color->id}}">{{ __($color->name) }}</option>
         @endforeach
     </select>
     <div class="flex mt-4">
@@ -32,7 +32,10 @@
             <x-button 
                 x-bind:disabled="!$wire.quantity"{{-- Valor 0 o negativo este boton se bloquea  --}}
                 class="full" 
-                color="blue">
+                color="blue"
+                wire:click="addItem"
+                wire:loading.attr="disabled"
+                wire:target="addItem">
                 Agregar al carrito de compras
             </x-button>
         </div>

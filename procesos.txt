@@ -21,6 +21,7 @@ siempre que tenga que crear una tabla intermedia en este caso seria la tabla 'br
 
 (TRADUCIR FECHAS)
 -composer require jenssegers/date
+y para traducir una iteracion solo hay que agregar dos __ y encerrarla en parentesis {{ __($info->example) }}
 
 (INSTALACIÓN DE SHOPPINGCART)
 -composer require bumbummen99/shoppingcart
