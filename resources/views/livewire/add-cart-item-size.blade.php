@@ -20,7 +20,17 @@
         </select>
     </div>    
 
-    <div class="flex mt-3">
+    <p class="text-gray-500 my-4">
+        <span class="font-semibold">En Stock: </span>
+        
+        @if ($quantity)
+            {{$quantity}}
+        @else
+            {{$product->stock}}
+        @endif
+    </p>
+
+    <div class="flex">
         <div class="mr-4">
             <x-button 
                 disabled 
