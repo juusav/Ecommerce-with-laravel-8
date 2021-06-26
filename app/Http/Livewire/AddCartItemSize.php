@@ -33,7 +33,7 @@ class AddCartItemSize extends Component
     public function updatedColorId($value){
         $size = Size::find($this->size_id);
         $color = $size->colors->find($value);
-        $this->quantity = $color->pivot->quantity;
+        $this->quantity = qty_available($this->product->id, $color->id, $size->id); // En la propiedad quantity se almacenará la cantidad disponible que se puede agregar al carrito de compras
         $this->options['color'] = $color->name;
     }
 
@@ -52,6 +52,8 @@ class AddCartItemSize extends Component
                     'weight' => 550,
                     'options' => $this->options
                 ]);
+        $this->quantity = qty_available($this->product->id, $this->color->id, $this->size->id);                
+        $this->reset('qty');
         $this->emitTo('dropdown-cart', 'render'); //  Para un componente el evento será emitto. Se envia al componente Dropdown
     }
 

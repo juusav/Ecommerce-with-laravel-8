@@ -12,7 +12,9 @@ class AddCartItemColor extends Component
     public $color_id = "";
     public $qty = 1;
     public $quantity = 0;
-    public $options = [];
+    public $options = [
+        'size_id' => null
+    ];
 
     public function mount(){
         $this->colors = $this->product->colors;
@@ -22,7 +24,7 @@ class AddCartItemColor extends Component
     // updated + el nombre de alguna propiedad Este trozo se ejecutará cada vez que se cambie el valor de la propiedad
     public function updatedColorId($value){
         $color = $this->product->colors->find($value);
-        $this->quantity = $color->pivot->quantity;
+        $this->quantity = qty_available($this->product->id, $color->id);
         $this->options['color'] = $color->name;
     }
 
@@ -42,6 +44,8 @@ class AddCartItemColor extends Component
                     'weight' => 550,
                     'options' => $this->options
                 ]);
+        $this->quantity = qty_available($this->product->id, $this->color->id);                
+        $this->reset('qty');
         $this->emitTo('dropdown-cart', 'render'); //  Para un componente el evento será emitto. Se envia al componente Dropdown
     }
     

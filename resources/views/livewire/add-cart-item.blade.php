@@ -28,6 +28,7 @@
             <x-button 
                 class="w-full"
                 color="blue"
+                x-bind:disabled="$wire.qty > $wire.quantity"
                 wire:click="addItem"
                 wire:loading.attr="disabled"
                 wire:target="addItem">

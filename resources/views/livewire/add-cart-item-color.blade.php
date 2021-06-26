@@ -33,6 +33,7 @@
                 x-bind:disabled="!$wire.quantity"{{-- Valor 0 o negativo este boton se bloquea  --}}
                 class="full" 
                 color="blue"
+                x-bind:disabled="$wire.qty > $wire.quantity"
                 wire:click="addItem"
                 wire:loading.attr="disabled"
                 wire:target="addItem">

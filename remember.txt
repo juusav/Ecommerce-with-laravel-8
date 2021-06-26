@@ -8,3 +8,6 @@ asignen masivamente los demas campos se asignarán con normalidad.
 
 layout.app
 el stack es como una variable 
+
+Helper
+Funciones creadas por mi para usarlas a lo largo del proyecto

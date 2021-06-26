@@ -25,3 +25,6 @@ y para traducir una iteracion solo hay que agregar dos __ y encerrarla en parent
 
 (INSTALACIÓN DE SHOPPINGCART)
 -composer require bumbummen99/shoppingcart
+
+(Una vez creado los helpers edite y actualicé el archivo)
+-composer dumpautoload (actualizar el archivo composer.json)
