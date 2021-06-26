@@ -44,7 +44,10 @@
             <x-button 
                 x-bind:disabled="!$wire.quantity"
                 color="blue"
-                class="full">
+                class="full"
+                wire:click="addItem"
+                wire:loading.attr="disabled"
+                wire:target="addItem">
                 Agregar al carrito de compras
             </x-button>
         </div>
