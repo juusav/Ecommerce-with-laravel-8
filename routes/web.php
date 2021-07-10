@@ -17,6 +17,3 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('prueba', function(){
     \Cart::destroy();
 });
-
-
-//Me he quedado que no puedo sacar esta vainaaaaaaaaaaaaaaaa del cart porque creo que no funciona

@@ -1,5 +1,6 @@
-<div class="flex-1 relative">
-    <x-jet-input type="text" class="w-full" placeholder="Buscar producto" />
+<div class="flex-1 relative" x-data>
+    <x-jet-input wire:model="search" type="text" class="w-full" placeholder="Buscar producto" />
+
     <button class=" absolute top-0 right-0 w-12 h-full bg-gray-300 flex items-center justify-center rounded-r-md">
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30px" height="30px"
             viewBox="0 0 171 171" style=" fill:#000000;">
@@ -16,4 +17,25 @@
             </g>
         </svg>
     </button>
+
+    {{-- Results --}}
+    <div class="absolute w-full hidden" :class="{ 'hidden' : !$wire.open }" @click.away="$wire.open = false">
+        <div class="bg-white rounded-lg shadow mt-1">
+            <div class="px-4 py-3 space-y-1">
+
+                @forelse ($products as $product)
+                    <div class="flex">
+                        <img class="w-16 h-12 object-cover" src="{{ Storage::url($product->images->first()->url) }} " alt="">
+                        
+                        <div class="ml-4 text-gray-700">
+                            <p class="text-lg font-semibold leading-5">{{$product->name}}</p>
+                            <p>Categoría: {{$product->subcategory->category->name}}</p>
+                        </div>
+                    </div>
+                @empty
+                    <p class="text-lg font-semibold leading-5">No se han encontrado resultados :(</p>              
+                @endforelse
+            </div>
+        </div>
+    </div>
 </div>

@@ -15,7 +15,7 @@
         </a>
 
         {{-- Search bar --}}
-        <x-search />
+        @livewire('search')
 
         {{-- Register --}}
         <div class="ml-3 relative">
@@ -72,7 +72,6 @@
         </div>
 
         @livewire('dropdown-cart')
-
     </div>
 
     <nav id="navigation-menu" class="bg-gray-300 absolute container  hidden" :class="{'block': open, 'hidden': !open}">

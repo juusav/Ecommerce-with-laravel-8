@@ -8,16 +8,18 @@
                         {{$category->name}}
                     </h1>
 
-                    <a href="{{route('categories.show', $category)}}" class="text-sm text-gray-500 ml-2 font-semibold hover:text-gray-800 hover:underline">Ver más</a>
+                    <a href="{{route('categories.show', $category)}}"
+                       class="text-sm text-gray-500 ml-2 font-semibold hover:text-gray-800
+                        hover:underline">
+                        Ver más
+                    </a>
                 </div> 
                 @livewire('category-products', ['category' => $category])
                 {{-- 'category' variable que está siendo enviada app\livewire --}}
             </section>
         @endforeach
-
     </div>
     
-
     {{-- Solución de desface --}}
     @push('slider')
         <script>
@@ -66,5 +68,4 @@
             
         </script>
     @endpush
-
 </x-app-layout>
