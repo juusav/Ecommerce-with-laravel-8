@@ -24,14 +24,14 @@
             <div class="px-4 py-3 space-y-1">
 
                 @forelse ($products as $product)
-                    <div class="flex">
+                    <a class="flex" href="{{ route('products.show', $product) }}">
                         <img class="w-16 h-12 object-cover" src="{{ Storage::url($product->images->first()->url) }} " alt="">
                         
                         <div class="ml-4 text-gray-700">
                             <p class="text-lg font-semibold leading-5">{{$product->name}}</p>
                             <p>Categoría: {{$product->subcategory->category->name}}</p>
                         </div>
-                    </div>
+                    </a>
                 @empty
                     <p class="text-lg font-semibold leading-5">No se han encontrado resultados :(</p>              
                 @endforelse
