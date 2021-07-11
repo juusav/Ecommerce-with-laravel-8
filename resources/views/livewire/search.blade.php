@@ -1,10 +1,12 @@
 <div class="flex-1 relative" x-data>
-    <x-jet-input wire:model="search" type="text" class="w-full" placeholder="Buscar producto" />
+    <form action="{{ route('search') }}" autocomplete="off">
+        
+        <x-jet-input name="name" wire:model="search" type="text" class="w-full" placeholder="Buscar producto" />
 
-    <button class=" absolute top-0 right-0 w-12 h-full bg-gray-300 flex items-center justify-center rounded-r-md">
-        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30px" height="30px"
+        <button class=" absolute top-0 right-0 w-12 h-full bg-gray-300 flex items-center justify-center rounded-r-md">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30px" height="30px"
             viewBox="0 0 171 171" style=" fill:#000000;">
-            <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                 stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                 font-family="none" font-weight="none" font-size="none" text-anchor="none"
                 style="mix-blend-mode: normal">
@@ -15,8 +17,10 @@
                     </path>
                 </g>
             </g>
-        </svg>
-    </button>
+            </svg>
+        </button>
+    </form> 
+
 
     {{-- Results --}}
     <div class="absolute w-full hidden" :class="{ 'hidden' : !$wire.open }" @click.away="$wire.open = false">
