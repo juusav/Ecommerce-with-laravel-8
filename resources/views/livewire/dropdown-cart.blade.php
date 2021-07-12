@@ -61,8 +61,10 @@
                         </span>
                         EUR {{Cart::subtotal() }}
                     </p>
-                    <x-button-enlace color="orange" class="w-full">
-                        Ir al carrito de compra
+
+                    {{-- Ícono --}}
+                    <x-button-enlace href="{{ route('shopping-cart') }}" color="orange" class="w-full">
+                        Ir al carrito de compraa
                     </x-button-enlace>
                 </div>
             @endif
