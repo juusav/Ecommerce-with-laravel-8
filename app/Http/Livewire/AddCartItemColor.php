@@ -46,7 +46,7 @@ class AddCartItemColor extends Component
                 ]);
         $this->quantity = qty_available($this->product->id, $this->color->id);                
         $this->reset('qty');
-        $this->emitTo('dropdown-cart', 'render'); //  Para un componente el evento será emitto. Se envia al componente Dropdown
+        $this->emitTo('dropdown-cart', 'render'); //  Para un componente el evento será emitTo. Se envia al componente Dropdown
     }
     
     public function render(){

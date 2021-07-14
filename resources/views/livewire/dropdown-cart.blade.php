@@ -63,7 +63,7 @@
                     </p>
 
                     {{-- Ícono --}}
-                    <x-button-enlace href="{{ route('shopping-cart') }}" color="orange" class="w-full">
+                    <x-button-enlace href="{{ route('search') }}" color="orange" class="w-full">
                         Ir al carrito de compraa
                     </x-button-enlace>
                 </div>

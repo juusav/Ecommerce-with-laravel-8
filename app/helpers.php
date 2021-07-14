@@ -38,5 +38,6 @@ function qty_added($product_id, $color_id = null, $size_id = null){
 }
 
 function qty_available($product_id, $color_id = null, $size_id = null){
+    
     return quantity($product_id, $color_id, $size_id) - qty_added($product_id, $color_id, $size_id);
 }
