@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\Storage;
 class AddCartItemColor extends Component
 {
     public $product, $colors;
-
     public $color_id = "";
+
     public $qty = 1;
     public $quantity = 0;
+
     public $options = [
         'size_id' => null
     ];
@@ -44,7 +45,8 @@ class AddCartItemColor extends Component
                     'weight' => 550,
                     'options' => $this->options
                 ]);
-        $this->quantity = qty_available($this->product->id, $this->color->id);                
+
+        $this->quantity = qty_available($this->product->id, $this->color->id);
         $this->reset('qty');
         $this->emitTo('dropdown-cart', 'render'); //  Para un componente el evento será emitTo. Se envia al componente Dropdown
     }
