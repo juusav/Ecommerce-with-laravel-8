@@ -28,3 +28,6 @@ y para traducir una iteracion solo hay que agregar dos __ y encerrarla en parent
 
 (Una vez creado los helpers edite y actualicé el archivo)
 -composer dumpautoload (actualizar el archivo composer.json)
+
+(Almacenar productos en la BD que el usuario haya seleccionado gracias al plugin shoppingcart)
+-php artisan vendor:publish --provider="Gloudemans\Shoppingcart\ShoppingcartServiceProvider" --tag="migrations"

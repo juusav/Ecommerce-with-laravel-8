@@ -111,7 +111,7 @@
 
                 <div>
                     <x-button-enlace>
-                        Continuar
+                        <a href="{{ route('orders.create') }}">Continuar</a> 
                     </x-button-enlace>
                 </div>
             </div>
