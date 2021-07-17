@@ -28,49 +28,51 @@
                     <span class="ml-2 text-gray-700">Entrega a domicilio</span>
                 </label>
 
-                <div class="px-6 pb-6 grid grid-cols-2 gap-6 hidden" :class="{ 'hidden': envio_type !=2 }">
-                    {{-- Departments --}}
-                    <div>
-                        <x-jet-label value="Departmento"/>
-                        <select class="form-control w-full" wire:model="department_id">
-                            <option value="" disabled selected>Selecciona un departamento</option>
-                            @foreach ($departments as $department)
-                                <option value="{{$department->id}}">{{$department->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    {{-- Cities --}}
-                    <div>
-                        <x-jet-label value="Ciudad"/>
-                        <select class="form-control w-full" wire:model="city_id">
-                            <option value="" disabled selected>Selecciona una ciudad</option>
-                            @foreach ($cities as $city)
-                                <option value="{{$city->id}}">{{$city->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    {{-- Districts --}}
-                    <div>
-                        <x-jet-label value="Distrito"/>
-                        <select class="form-control w-full" wire:model="district_id">
-                            <option value="" disabled selected>Selecciona un distrito</option>
-                            @foreach ($districts as $district)
-                                <option value="{{$district->id}}">{{$district->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    {{-- Dirección --}}
-                    <div>
-                        <x-jet-label value="Dirección"/>
-                        <x-jet-input class="w-full" wire:model="address" type="text"/>
-                    </div>
-                    {{-- Referencia --}}
-                    <div class="col-span-2">
-                        <x-jet-label value="Referencia"/>
-                        <x-jet-input class="w-full" wire:model="reference" type="text"/>
+                <div class="hidden" :class="{ 'hidden': envio_type !=2 }">
+                    <div class="px-6 pb-6 grid grid-cols-2 gap-6">
+                        {{-- Departments --}}
+                        <div>
+                            <x-jet-label value="Departmento"/>
+                            <select class="form-control w-full" wire:model="department_id">
+                                <option value="" disabled selected>Selecciona un departamento</option>
+                                @foreach ($departments as $department)
+                                    <option value="{{$department->id}}">{{$department->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    
+                        {{-- Cities --}}
+                        <div>
+                            <x-jet-label value="Ciudad"/>
+                            <select class="form-control w-full" wire:model="city_id">
+                                <option value="" disabled selected>Selecciona una ciudad</option>
+                                @foreach ($cities as $city)
+                                    <option value="{{$city->id}}">{{$city->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    
+                        {{-- Districts --}}
+                        <div>
+                            <x-jet-label value="Distrito"/>
+                            <select class="form-control w-full" wire:model="district_id">
+                                <option value="" disabled selected>Selecciona un distrito</option>
+                                @foreach ($districts as $district)
+                                    <option value="{{$district->id}}">{{$district->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    
+                        {{-- Dirección --}}
+                        <div>
+                            <x-jet-label value="Dirección"/>
+                            <x-jet-input class="w-full" wire:model="address" type="text"/>
+                        </div>
+                        {{-- Referencia --}}
+                        <div class="col-span-2">
+                            <x-jet-label value="Referencia"/>
+                            <x-jet-input class="w-full" wire:model="reference" type="text"/>
+                        </div>
                     </div>
                 </div>
             </div>
