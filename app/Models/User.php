@@ -60,7 +60,7 @@ class User extends Authenticatable
     ];
 
     //Relación uno a muchos
-    public function orders(){
+    public function order(){
         return $this->hasMany(Order::class);
     }
 }

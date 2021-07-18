@@ -12,10 +12,10 @@ class City extends Model
     protected $fillable = ['name', 'cost', 'department_id'];
 
     //Relación uno a muchos
-    public function districts(){
+    public function district(){
         return $this->hasMany(District::class);
     }
-    public function orders(){
+    public function order(){
         return $this->hasMany(Order::class);
     }
 }

@@ -8,7 +8,6 @@ use App\Models\District;
 use Livewire\Component;
 use App\Models\Order;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Prophecy\Doubler\Generator\Node\ReturnTypeNode;
 
 class CreateOrder extends Component
 {
@@ -73,8 +72,9 @@ class CreateOrder extends Component
         $order->total = $this->shipping_cost + Cart::subtotal();
         $order->content = Cart::content();
 
+        //Shiping_cost
         if($this->envio_type == 2){
-            $order->shipping_cost = $this->shipping_cost;
+            $order->shipping_cost = $this->shipping_cost; 
             $order->department_id = $this->department_id;
             $order->city_id = $this->city_id;
             $order->district_id = $this->district_id;

@@ -12,7 +12,7 @@ class District extends Model
     protected $fillable = ['name', 'city_id'];
 
     //Relación uno a muchos
-    public function orders(){
+    public function order(){
         return $this->hasMany(Order::class);
     }
 }
