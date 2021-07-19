@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
@@ -14,6 +15,16 @@ class CreateProduct extends Component{
     public $categories, $subcategories = [], $brands = [];
     public $category_id = "", $subcategory_id = "", $brand_id = "";
     public $name, $slug, $description, $price, $quantity;
+
+    protected $rules = [
+        'category_id' => 'required',
+        'subcategory_id' => 'required',
+        'brand_id' => 'required',
+        'name' => 'required',
+        'price' => 'required',
+        'description' => 'required',
+        'slug' => 'required|unique:products',
+    ];
 
     public function updatedCategoryId($value){
         $this->subcategories = Subcategory::where('category_id', $value)->get(); 
@@ -34,6 +45,18 @@ class CreateProduct extends Component{
 
     public function mount(){
         $this->categories = Category::all();
+    }
+
+    public function save(){
+        
+        $rules = $this->rules;
+
+        if($this->subcategory_id){
+            if(!$this->subcategory->color && !$this->subcategory->size){
+                $rules['quantity'] = 'required';
+            }
+        }
+        $this->validate($rules);
     }
 
     public function render(){
