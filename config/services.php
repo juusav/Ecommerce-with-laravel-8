@@ -30,4 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    // 'paypal' => [
+    //     'client_id' => env('PAYPAL_CLIENT_ID'),
+    //     'secret'    => env('PAYPAL_SECRET')
+    // ]
 ];
