@@ -70,7 +70,6 @@
                     console.error( error );
                 } );"
                 x-ref="miEditor" {{-- Es como un id --}}>
-                Añadir descripción
             </textarea>
         </div>
         

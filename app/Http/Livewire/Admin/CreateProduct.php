@@ -57,6 +57,22 @@ class CreateProduct extends Component{
             }
         }
         $this->validate($rules);
+
+        $product = new Product();
+
+        $product->name = $this->name;
+        $product->slug = $this->slug;
+        $product->price = $this->price;
+        $product->description = $this->description;
+        $product->subcategory_id = $this->subcategory_id;
+        $product->brand_id = $this->brand_id;
+
+        if($this->subcategory_id){
+            if(!$this->subcategory->color && !$this->subcategory->size){
+                $product->quantity = $this->quantity;
+            }
+        }
+        $product->save();
     }
 
     public function render(){
