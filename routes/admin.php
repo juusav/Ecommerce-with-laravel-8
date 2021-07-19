@@ -9,5 +9,4 @@ Route::get('/', ShowProducts::class)->name('admin.index');
 Route::get('products/create', CreateProduct::class)->name('admin.products.create');
 
 Route::get('products/{product}/edit', function(){
-
 })->name('admin.products.edit');

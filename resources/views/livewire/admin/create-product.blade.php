@@ -51,7 +51,7 @@
         <textarea rows="4" 
             class="w-full form-control"
             x-data
-            x-init="ClassicEditorCreate($refs.miEditor)
+            x-init="ClassicEditor.create($refs.miEditor)
             .then(function(editor){
                 editor.model.document.on('change:data', () => {
                     @this.set('description', editor.getData()) {{-- Livewire tiene .set que cambia el valor del componente de livewire. Para acceder desde JavaScript hay que agregar @this.set. Primer parametro será el description y este se cambiará por lo que se haya escrito en el editor --}}
@@ -63,4 +63,37 @@
             x-ref="miEditor" {{-- Es como un id --}}
             ></textarea>
     </div>
+
+    <div class="grid grid-cols-2 gap-6 mb-4">
+        {{-- Brand --}}
+        <div>
+            <x-jet-label value="Marca" />
+            <select class="form-control w-full" wire:model="brand_id">
+                <option value="" selected disabled>Seleccionar una marca</option>
+                @foreach ($brands as $brand)
+                    <option value="{{$brand->id}}">{{$brand->name}}</option>
+                @endforeach
+            </select>
+
+        </div>
+        {{-- Precio --}}
+        <div>
+            <x-jet-label value="Precio" />
+            <x-jet-input type="number" 
+                wire:model="price"
+                class="w-full" 
+                step=".01" />
+        </div>
+    </div>
+
+    @if ($subcategory_id)
+        @if (!$this->subcategory->color && !$this->subcategory->size)
+            <div>
+                <x-jet-label value="Cantidad" />
+                <x-jet-input type="number" 
+                    wire:model="quantity"
+                    class="w-full" />
+            </div>
+        @endif
+    @endif
 </div>
