@@ -59,6 +59,7 @@
             <x-jet-label value="Descripción" />
             <textarea rows="4" 
                 class="w-full form-control"
+                wire:model="description"
                 x-data
                 x-init="ClassicEditor.create($refs.miEditor)
                 .then(function(editor){
