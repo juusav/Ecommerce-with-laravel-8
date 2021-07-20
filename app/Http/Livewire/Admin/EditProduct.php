@@ -71,10 +71,10 @@ class EditProduct extends Component{
             }
         }
         $this->validate($rules);
-
         $this->product->slug = $this->slug;
-
         $this->product->save();
+
+        $this->emit('saved');
     }
 
     public function render(){
