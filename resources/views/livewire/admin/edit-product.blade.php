@@ -64,7 +64,7 @@
                 x-init="ClassicEditor.create($refs.miEditor)
                 .then(function(editor){
                     editor.model.document.on('change:data', () => {
-                        @this.set('description', editor.getData()) {{-- Livewire tiene .set que cambia el valor del componente de livewire. Para acceder desde JavaScript hay que agregar @this.set. Primer parametro será el description y este se cambiará por lo que se haya escrito en el editor --}}
+                        @this.set('product.description', editor.getData()) {{-- Livewire tiene .set que cambia el valor del componente de livewire. Para acceder desde JavaScript hay que agregar @this.set. Primer parametro será el description y este se cambiará por lo que se haya escrito en el editor --}}
                     })
                 })
                 .catch( error => {
@@ -100,14 +100,17 @@
         </div>
     </div>
 
-    @if (!$this->subcategory->color && !$this->subcategory->size)
-        <div>
-            <x-jet-label value="Cantidad" />
-            <x-jet-input type="number" 
-                wire:model="quantity"
-                class="w-full" />
-            <x-jet-input-error for="quantity" />
-        </div>
+    @if ($this->subcategory)
+
+        @if (!$this->subcategory->color && !$this->subcategory->size)
+            <div>
+                <x-jet-label value="Cantidad" />
+                <x-jet-input type="number" 
+                    wire:model="product.quantity"
+                    class="w-full" />
+                <x-jet-input-error for="product.quantity" />
+            </div>
+        @endif
     @endif
 
     <div class="flex mt-4">
@@ -116,7 +119,7 @@
             wire:target="save"{{-- No interrumpe ningún otro proceso  --}}
             wire:click="save"
             class="ml-auto">
-            Crear producto
+            Actualizar producto
         </x-jet-button>
     </div>
 </div>
