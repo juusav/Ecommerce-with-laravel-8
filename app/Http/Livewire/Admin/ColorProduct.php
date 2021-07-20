@@ -11,6 +11,8 @@ class ColorProduct extends Component{
     public $product, $colors, $color_id, $quantity, $open = false;
     public $pivot, $pivot_color_id, $pivot_quantity;
 
+    protected $listeners = ['delete'];
+
     protected $rules = [
         'color_id' => 'required',
         'quantity' => 'required|numeric'
@@ -41,6 +43,21 @@ class ColorProduct extends Component{
 
         $this->pivot_color_id = $pivot->color_id;
         $this->pivot_quantity = $pivot->quantity;
+    }
+
+    public function update(){
+        $this->pivot->color_id = $this->pivot_color_id;
+        $this->pivot->quantity = $this->pivot_quantity;
+
+        $this->pivot->save();
+        $this->product = $this->product->fresh();
+        $this->open = false;
+    }
+
+    public function delete(Pivot $pivot){
+        $pivot->delete();
+
+        $this->product = $this->product->fresh();
     }
 
     public function render(){

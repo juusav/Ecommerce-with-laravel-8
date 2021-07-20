@@ -19,7 +19,7 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.7/glider.min.js" integrity="sha512-tHimK/KZS+o34ZpPNOvb/bTHZb6ocWFXCtdGqAlWYUcz+BGHbNbHMKvEHUyFxgJhQcEO87yg5YqaJvyQgAEEtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>        
         {{-- Fuentes para la vista crear producto --}}
         <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
     </head>
@@ -48,6 +48,6 @@
         @stack('modals')
         @stack('slider')
         @stack('script')
-
+        
     </body>
 </html>
