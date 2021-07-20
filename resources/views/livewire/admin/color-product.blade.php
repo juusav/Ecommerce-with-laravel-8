@@ -58,7 +58,7 @@
 
             <tbody>
                 @foreach ($product_colors as $product_color)
-                    <tr>
+                    <tr wire:key="product_color-{{$product_color->pivot->id}}"> {{-- Para no saturar a livewire --}}
                         <td class="capitalize px-4 py-2">
                             {{__($colors->find($product_color->pivot->color_id)->name)}}
                         </td>
@@ -68,7 +68,11 @@
                         </td>
 
                         <td class="px-4 py-2 flex">
-                            <x-jet-secondary-button class="ml-auto mr-2">
+                            <x-jet-secondary-button 
+                                class="ml-auto mr-2"
+                                wire:click="edit({{$product_color->pivot->id}})"
+                                wire:loading.attr="disabled"
+                                wire:target="edit({{$product_color->pivot->id}})">
                                 Actualizar
                             </x-jet-secondary-button>
 
@@ -94,7 +98,8 @@
                     Color
                 </x-jet-label>
 
-                <select class="form-control w-full">
+                <select class="form-control w-full"
+                    wire:model="pivot_color_id">
                     <option value="">Seleccionar color</option>
                     @foreach ($colors as $color)
                         <option value="{{$color->id}}">{{ucfirst(__($color->name))}}</option>
@@ -106,12 +111,12 @@
                 <x-jet-label>
                     Cantidad
                 </x-jet-label>
-                <x-jet-input class="w-full" type="number" placeholder="Ingresar cantidad" />
+                <x-jet-input class="w-full" type="number" placeholder="Ingresar cantidad" wire:model="pivot_quantity" />
             </div>
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-secondary-button>
+            <x-jet-secondary-button wire:click="$set('open', false)">
                 Cancelar
             </x-jet-secondary-button>
 
