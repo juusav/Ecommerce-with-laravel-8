@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class ColorProduct extends Component{
 
-    public $product, $colors, $color_id, $quantity;
+    public $product, $colors, $color_id, $quantity, $open = false;
 
     protected $rules = [
         'color_id' => 'required',
