@@ -81,7 +81,7 @@
 
                                 <x-jet-danger-button
                                     wire:click="$emit('deletePivot', {{ $size_color->pivot->id }})">
-                                Eliminar
+                                    Eliminar
                                 </x-jet-danger-button>
                             </td>
                         </tr>
@@ -90,4 +90,75 @@
             </table>
         </div>
     @endif
+
+    <x-jet-dialog-modal wire:model="open">
+        <x-slot name="title" >
+            Editar colores
+        </x-slot>
+
+        <x-slot name="content">
+            {{-- Color --}}
+            <div class="mb-4">
+                <x-jet-label>
+                    Color
+                </x-jet-label>
+
+                <select class="form-control w-full"
+                    wire:model="pivot_color_id">
+                    <option value="">Seleccionar color</option>
+                    @foreach ($colors as $color)
+                        <option value="{{$color->id}}">{{ucfirst(__($color->name))}}</option>
+                    @endforeach
+                </select>
+            </div>
+            {{-- Quantity --}}
+            <div>
+                <x-jet-label>
+                    Cantidad
+                </x-jet-label>
+                <x-jet-input class="w-full" type="number" placeholder="Ingresar cantidad" wire:model="pivot_quantity" />
+            </div>
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-jet-secondary-button 
+                wire:click="$set('open', false)">
+                Cancelar
+            </x-jet-secondary-button>
+
+            <x-jet-button 
+                wire:click="update"
+                wire:loading.attr="disabled"
+                wire:target="update">
+                Actualizar
+            </x-jet-button>
+        </x-slot>
+    </x-jet-dialog-modal>
+
+    {{-- @push('script')
+        <script>
+            Livewire.on('deletePivot', pivot => {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        Livewire.emit('delete', pivot)
+
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }
+                })
+            })
+        </script>
+    @endpush --}}
 </div>
