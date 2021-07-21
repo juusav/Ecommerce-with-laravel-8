@@ -29,9 +29,9 @@
                     {{-- Edit and delete buttons --}}
                     <div class="ml-auto">
                         <x-jet-button 
-                            wire:click="edit({{$size}})"
+                            wire:click="edit({{$size->id}})"
                             wire:loading.attr="disabled"
-                            wire:target="edit({{$size}})">
+                            wire:target="edit({{$size->id}})">
                             <i class="fas fa-edit"></i>
                         </x-jet-button>
 
@@ -55,6 +55,7 @@
             </x-jet-label>
 
             <x-jet-input wire:model="name_edit" type="text" class="w-full" />
+            <x-jet-input-error for="name_edit" />
         </x-slot>
 
         <x-slot name="footer">
