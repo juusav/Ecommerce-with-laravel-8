@@ -3,7 +3,7 @@
 
         <div>
             <x-jet-label>
-                Cantidad
+                Talla
             </x-jet-label>
 
             <x-jet-input wire:model="name" type="text" placeholder="Ingresar talla" class="w-full mt-2" />

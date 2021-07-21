@@ -20,6 +20,7 @@ class SizeProduct extends Component{
         $this->product->sizes()->create([
             'name' => $this->name
         ]);
+        $this->reset('name');
         $this->product = $this->product->fresh();
     }
 
