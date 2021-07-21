@@ -25,11 +25,24 @@ class ColorProduct extends Component{
     public function save(){
         $this->validate();
 
-        $this->product->colors()->attach([
-            $this->color_id => [
-                'quantity' => $this->quantity
-            ]
-        ]);
+        $pivot = Pivot::where('color_id', $this->color_id)
+                        ->where('product_id', $this->product->id)
+                        ->first();
+
+        if ($pivot) {
+            $pivot->quantity = $pivot->quantity + $this->quantity;
+            $this->save();
+
+        } else {
+            
+            $this->product->colors()->attach([
+                $this->color_id => [
+                    'quantity' => $this->quantity
+                ]
+            ]);
+        }
+        
+
         $this->reset(['color_id', 'quantity']);     
 
         $this->emit('saved');

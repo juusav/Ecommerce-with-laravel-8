@@ -17,10 +17,10 @@ class CreateColorSizeTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger('color_id');
-            $table->foreign('color_id')->references('id')->on('colors');
+            $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
 
             $table->unsignedBigInteger('size_id');
-            $table->foreign('size_id')->references('id')->on('sizes');
+            $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade');
 
             $table->integer('quantity');
 

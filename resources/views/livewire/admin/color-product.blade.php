@@ -149,7 +149,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
 
-                        Livewire.emit('delete', pivot)
+                        Livewire.emitTo('admin.color-product', 'delete', pivot);
 
                         Swal.fire(
                             'Deleted!',
