@@ -31,7 +31,7 @@ class ColorProduct extends Component{
 
         if ($pivot) {
             $pivot->quantity = $pivot->quantity + $this->quantity;
-            $this->save();
+            $pivot->save();
 
         } else {
             

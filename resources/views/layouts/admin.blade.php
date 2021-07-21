@@ -48,6 +48,15 @@
         @stack('modals')
         @stack('slider')
         @stack('script')
-        
+
+        <script>
+            Livewire.on('errorSize', menssage => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: menssage,
+                })
+            })
+        </script>
     </body>
 </html>
