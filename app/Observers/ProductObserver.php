@@ -17,14 +17,15 @@ class ProductObserver{
             }
 
         }elseif ($subcategory->color){
-            
+
             if($product->sizes->count()){
                 foreach ($product->sizes as $size){
                     $size->delete();
                 }
             }
         }
-        else{
+        else{ //Si no hay 
+
             if($product->colors->count()){
                 $product->colors()->detach();
             }
