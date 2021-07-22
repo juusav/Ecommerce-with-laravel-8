@@ -8,6 +8,28 @@
             id="my-awesome-dropzone"></form>
     </div>
 
+    @if ($product->images->count())
+
+        <section class="bg-white shadow-lg rounded-lg p-6 mb-4">
+            <ul class="flex flex-wrap">
+                
+                @foreach ($product->images as $image)
+
+                    <li class="relative" wire:key="image-{{$image->id}}">
+                        <img src="{{Storage::url($image->url)}}" alt="" class="w-32 h-20 object-cover">
+
+                        <x-jet-danger-button class="absolute right-2 top-2"
+                            wire:click="deleteImage({{$image->id}})"
+                            wire:loading.attr="disabled"
+                            wire:target="deleteImage({{$image->id}})">
+                            x
+                        </x-jet-danger-button>
+                    </li>
+                @endforeach
+            </ul>
+        </section>
+    @endif
+
     <div class="bg-white shadow-xl rounded-lg p-6">
         <div class="grid grid-cols-2 gap-6 mb-4">
             {{-- Category --}}
@@ -135,6 +157,7 @@
         </div>
     </div>
 
+    {{-- size and colors options --}}
     @if ($this->subcategory)
         @if ($this->subcategory->size)
             @livewire('admin.size-product', ['product' => $product], key('admin.size-product' . $product->id))
@@ -143,6 +166,7 @@
         @endif
     @endif
 
+    {{-- Dropzone images --}}
     @push('script')
         <script>
             Dropzone.options.myAwesomeDropzone = {
