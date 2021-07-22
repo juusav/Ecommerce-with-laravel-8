@@ -177,6 +177,11 @@
                 acceptedFiles: "image/*",
                 paramName: "file", 
                 maxFilesize: 2, // MB
+                complete: function(){
+                    this.removeFile(file){
+                        Livewire.emit('refreshProduct')
+                    }
+                }
             };
         </script>
     @endpush

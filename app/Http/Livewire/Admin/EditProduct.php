@@ -29,6 +29,8 @@ class EditProduct extends Component{
         'product.quantity' => 'numeric',
     ];
 
+    protected $listeners = ['refreshProduct'];
+
     public function mount(Product $product){
         $this->product = $product;
         $this->categories = Category::all();
@@ -41,6 +43,10 @@ class EditProduct extends Component{
         $this->brands = Brand::whereHas('categories', function(Builder $query){
             $query->where('category_id', $this->category_id);
         })->get();
+    }
+
+    public function refreshProduct(){
+        $this->product = $this->product->fresh();
     }
 
     public function updatedProductName($value){
