@@ -17,6 +17,7 @@ class ProductObserver{
             }
 
         }elseif ($subcategory->color){
+            
             if($product->sizes->count()){
                 foreach ($product->sizes as $size){
                     $size->delete();
