@@ -58,7 +58,7 @@
                     title: 'Oops...',
                     text: menssage,
                 })
-            })
+            });
         </script>
     </body>
 </html>
