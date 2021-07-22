@@ -1,6 +1,13 @@
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
     <h1 class="text-3xl text-center font-semibold mb-8">Editar producto</h1>
 
+    <div class="mb-4" wire:ignore>
+        <form action="{{route('admin.products.files', $product)}}"
+            method="POST"
+            class="dropzone"
+            id="my-awesome-dropzone"></form>
+    </div>
+
     <div class="bg-white shadow-xl rounded-lg p-6">
         <div class="grid grid-cols-2 gap-6 mb-4">
             {{-- Category --}}
@@ -135,4 +142,18 @@
             @livewire('admin.color-product', ['product' => $product], key('admin.color-product' . $product->id))
         @endif
     @endif
+
+    @push('script')
+        <script>
+            Dropzone.options.myAwesomeDropzone = {
+                headers: {
+                    'x-CSRF-TOKEN' : "{{ csrf_token() }}"
+                },
+                dictDefaultMessage: "Arrastra una imagen",
+                acceptedFiles: "image/*",
+                paramName: "file", 
+                maxFilesize: 2, // MB
+            };
+        </script>
+    @endpush
 </div>
