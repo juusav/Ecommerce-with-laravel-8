@@ -57,9 +57,16 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full object-cover"
+
+                                        @if ($product->images->count())
+                                            <img class="h-10 w-10 rounded-full object-cover"
                                             src="{{Storage::url($product->images->first()->url)}}" alt="">
+                                        @else
+                                            <img class="h-10 w-10 rounded-full object-cover"
+                                            src="https://phantom-marca.unidadeditorial.es/252acdd64f48851f815c16049a789f23/resize/1320/f/jpg/assets/multimedia/imagenes/2021/04/19/16188479459744.jpg" alt="">
+                                        @endif
                                     </div>
+                                    
                                     <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">
                                             {{$product->name}}
