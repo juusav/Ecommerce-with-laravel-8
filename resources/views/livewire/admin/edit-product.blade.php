@@ -198,9 +198,10 @@
                 paramName: "file", 
                 maxFilesize: 2, // MB
                 complete: function(){
-                    this.removeFile(file){
-                        Livewire.emit('refreshProduct')
-                    }
+                    this.removeFile(file);
+                },
+                queuecomplete: function(){
+                    Livewire.emit('refreshProduct');
                 }
             };
 
