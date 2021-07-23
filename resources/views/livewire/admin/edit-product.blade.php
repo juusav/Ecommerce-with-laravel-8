@@ -1,5 +1,6 @@
 <div>
 
+    {{-- button to delete product --}}
     <header class="bg-white shadow">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
@@ -14,6 +15,7 @@
         </div>
     </header>
 
+    {{-- Content --}}
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
         <h1 class="text-3xl text-center font-semibold mb-8">Editar producto</h1>
 
