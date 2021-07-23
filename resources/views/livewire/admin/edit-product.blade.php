@@ -186,7 +186,7 @@
         @endif
     </div>
 
-    {{-- Dropzone images --}}
+    {{-- Dropzone images up --}}
     @push('script')
         <script>
             Dropzone.options.myAwesomeDropzone = {
