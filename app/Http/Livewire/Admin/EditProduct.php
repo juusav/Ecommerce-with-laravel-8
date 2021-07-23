@@ -10,8 +10,8 @@ use App\Models\Subcategory;
 
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class EditProduct extends Component{
 
@@ -29,7 +29,7 @@ class EditProduct extends Component{
         'product.quantity' => 'numeric',
     ];
 
-    protected $listeners = ['refreshProduct'];
+    protected $listeners = ['refreshProduct', 'delete'];
 
     public function mount(Product $product){
         $this->product = $product;
@@ -85,11 +85,24 @@ class EditProduct extends Component{
         $this->emit('saved');
     }
 
+    // Eliminar imagenes en la vista editar
     public function deleteImage(Image $image){
         Storage::delete([$image->url]);
 
         $image->delete();
         $this->product = $this->product->fresh();
+    }
+
+    //Eliminar imagenes de la base de datos 
+    public function delete(){
+        $images = $this->product->images;
+
+        foreach ($images as $image){
+            Storage::delete($image->url);
+            $image->delete();
+        }
+        $this->product->delete();
+        return redirect()->route('admin.index');
     }
 
     public function render(){
