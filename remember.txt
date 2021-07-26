@@ -13,4 +13,8 @@ Helper
 Funciones creadas por mi para usarlas a lo largo del proyecto
 
 Prefix
-El nombre que estableci en el prefijo del archivo RouteserviceProvider es el admin por lo cual la ruta '/' será admin 
+El nombre que estableci en el prefijo del archivo RouteserviceProvider es el admin por lo cual la ruta '/' será admin
+
+Storage/images
+php artisan storage:link 
+to create a shortcut
