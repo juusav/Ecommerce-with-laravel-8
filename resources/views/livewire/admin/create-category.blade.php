@@ -23,13 +23,6 @@
 
                 <x-jet-input-error for="createForm.slug" />
             </div>
-            {{-- Icon --}}
-            <div class="col-span-6 sm:col-span-4">
-                <x-jet-label>Ícono</x-jet-label>
-                <x-jet-input type="text" class="w-full mt-1" wire:model.defer="createForm.icon" />
-
-                <x-jet-input-error for="createForm.icon" />
-            </div>
             {{-- Brands --}}
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label>Marcas</x-jet-label>
@@ -50,7 +43,7 @@
             {{-- Image --}}
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label>Imagen</x-jet-label>
-                <x-jet-input type="file" class="mt-1" wire:model="createForm.image" />
+                <input type="file" class="mt-1" accept="image/*" wire:model="createForm.image" id="{{$rand}}"/>
 
                 <x-jet-input-error for="createForm.image" />
             </div>
