@@ -68,6 +68,8 @@ class CreateCategory extends Component{
 
         $this->rand = rand(); //El número aleatorio creado en mount cambiará y cuando renderice la página este cambiará y se limpiará el input
         $this->reset('createForm');
+        $this->getCategories();
+        $this->emit('saved');
     }
 
     public function render(){
