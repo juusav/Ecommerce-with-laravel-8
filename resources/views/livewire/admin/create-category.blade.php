@@ -1,5 +1,5 @@
 <div>
-    <x-jet-form-section submit="save">
+    <x-jet-form-section submit="save" class="mb-6">
         <x-slot name="title">
             Crear categoria
         </x-slot>
@@ -53,4 +53,40 @@
             <x-jet-button>Crear categoria</x-jet-button>
         </x-slot>
     </x-jet-form-section>
+
+    <x-jet-action-section>
+        <x-slot name="title">
+            Lista de categorías
+        </x-slot>
+
+        <x-slot name="description"></x-slot>
+
+        <x-slot name="content"> 
+            <table class="text-gray-600">
+                <thead class="border-b border-gray-300">
+                    <tr class="text-left">
+                        <th class="py-2 w-full">Nombre</th>
+                        <th class="py-2">Acción</th>
+                    </tr>
+                </thead>
+
+                <tbody class="divide-y divide-gray-300">
+                    @foreach ($categories as $category)
+                        <tr>
+                            <td class="py-2">
+                                <span class="uppercase">{{$category->name}}</span>
+                            </td>
+
+                            <td class="py-2">
+                                <div class="flex divide-x divide-gray-300 font-semibold">
+                                    <a class="pr-2 hover:text-blue-600 cursor-pointer">Editar</a>
+                                    <a class="pl-2 hover:text-red-600 cursor-pointer">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </x-slot>
+    </x-jet-action-section>
 </div>

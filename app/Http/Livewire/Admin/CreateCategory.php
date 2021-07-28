@@ -11,7 +11,8 @@ class CreateCategory extends Component{
 
     use WithFileUploads;
 
-    public $brands, $rand; //Rand para limpiar el campo imagen luego de ser creada la categoria
+    // Propiedades
+    public $brands, $categories, $rand; //Rand para limpiar el campo imagen luego de ser creada la categoria
 
     public $createForm = [
         'name' => null,
@@ -36,6 +37,7 @@ class CreateCategory extends Component{
 
     public function mount(){
         $this->getBrands();
+        $this->getCategories();
         $this->rand = rand();
     }
 
@@ -45,6 +47,10 @@ class CreateCategory extends Component{
 
     public function getBrands(){
         $this->brands = Brand::all();
+    }
+
+    public function getCategories(){
+        $this->categories = Category::all();
     }
 
     public function save(){
