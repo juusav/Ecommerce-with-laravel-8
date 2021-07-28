@@ -12,8 +12,8 @@ class ShowCategory extends Component{
     public function mount(Category $category){
         $this->category = $category;
     }
-    
+
     public function render(){
-        return view('livewire.admin.show-category');
+        return view('livewire.admin.show-category')->layout('layouts.admin');
     }
 }

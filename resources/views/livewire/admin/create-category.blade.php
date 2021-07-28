@@ -72,7 +72,7 @@
                     @foreach ($categories as $category)
                         <tr>
                             <a href="{{route('admin.categories.show', $category)}}" class="py-2">
-                                <span class="uppercase">{{ $category->name }}</span>
+                                <span class="uppercase underline hover:text-blue-600">{{ $category->name }}</span>
                             </a>
 
                             <td class="py-2">
