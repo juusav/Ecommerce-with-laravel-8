@@ -14,6 +14,8 @@ class CreateCategory extends Component{
     // Propiedades
     public $brands, $categories, $rand; //Rand para limpiar el campo imagen luego de ser creada la categoria
 
+    protected $listeners = ['delete'];
+
     public $createForm = [
         'name' => null,
         'slug' => null,
@@ -70,6 +72,11 @@ class CreateCategory extends Component{
         $this->reset('createForm');
         $this->getCategories();
         $this->emit('saved');
+    }
+
+    public function delete(Category $category){
+        $category->delete();
+        $this->getCategories();
     }
 
     public function render(){
