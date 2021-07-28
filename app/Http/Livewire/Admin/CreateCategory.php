@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Brand;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
@@ -12,7 +13,7 @@ class CreateCategory extends Component{
     use WithFileUploads;
 
     // Propiedades
-    public $brands, $categories, $rand; //Rand para limpiar el campo imagen luego de ser creada la categoria
+    public $brands, $categories, $category, $rand; //Rand para limpiar el campo imagen luego de ser creada la categoria
 
     protected $listeners = ['delete'];
 
@@ -22,6 +23,16 @@ class CreateCategory extends Component{
         'image' => null,
         'brands' => [],
     ];
+
+    public $editForm = [
+        'open' => false, 
+        'name' => null,
+        'slug' => null,
+        'image' => null,
+        'brands' => [],
+    ];
+
+    public $editImage;
 
     protected $rules = [
         'createForm.name' => 'required',
@@ -72,6 +83,17 @@ class CreateCategory extends Component{
         $this->reset('createForm');
         $this->getCategories();
         $this->emit('saved');
+    }
+
+    public function edit(Category $category){
+        $this->category = $category;
+
+
+        $this->editForm['open'] = true;
+        $this->editForm['name'] = $category->name;
+        $this->editForm['slug'] = $category->slug;
+        $this->editForm['image'] = Storage::url($category->image);
+        $this->editForm['brands'] = $category->brands->pluck('id'); //Solo trae una marca 
     }
 
     public function delete(Category $category){
