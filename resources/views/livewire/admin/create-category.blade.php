@@ -71,16 +71,14 @@
                 <tbody class="divide-y divide-gray-300">
                     @foreach ($categories as $category)
                         <tr>
-                            <td class="py-2">
+                            <a href="{{route('admin.categories.show', $category)}}" class="py-2">
                                 <span class="uppercase">{{ $category->name }}</span>
-                            </td>
+                            </a>
 
                             <td class="py-2">
                                 <div class="flex divide-x divide-gray-300 font-semibold">
-                                    <a class="pr-2 hover:text-blue-600 cursor-pointer"
-                                        wire:click="edit('{{ $category->slug }}')">Editar</a>
-                                    <a class="pl-2 hover:text-red-600 cursor-pointer"
-                                        wire:click="$emit('deleteCategory', '{{ $category->slug }}')">Eliminar</a>
+                                    <a class="pr-2 hover:text-blue-600 cursor-pointer" wire:click="edit('{{ $category->slug }}')">Editar</a>
+                                    <a class="pl-2 hover:text-red-600 cursor-pointer" wire:click="$emit('deleteCategory', '{{ $category->slug }}')">Eliminar</a>
                                 </div>
                             </td>
                         </tr>
