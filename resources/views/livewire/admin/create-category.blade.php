@@ -90,13 +90,21 @@
         </x-slot>
     </x-jet-action-section>
 
-    <x-jet-dialog-model wire:model="editForm.open">
+    <x-jet-dialog-modal wire:model="editForm.open">
         <x-slot name="title">
             Editar categoría
         </x-slot>
 
         <x-slot name="content">
             <div class="space-y-3">
+                {{-- Edit image --}}
+                <div>
+                    @if ($editImage)
+                        <img src="{{$editImage->temporaryUrl()}}" class="w-full h-64 object-cover object-center">
+                    @else
+                        <img src="{{$editForm['image']}}" class="w-full h-64 object-cover object-center">
+                    @endif
+                </div>
                 {{-- Name --}}
                 <div>
                     <x-jet-label>Nombre</x-jet-label>
@@ -138,7 +146,9 @@
         </x-slot>
 
         <x-slot name="footer">
-
+            <x-jet-danger-button wire:click="update" wire:loading.attr="disabled" wire:target="editImage, update">
+                Actualizar
+            </x-jet-danger-button>
         </x-slot>
-    </x-jet-dialog-model>
+    </x-jet-dialog-modal>
 </div>
