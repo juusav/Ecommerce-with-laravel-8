@@ -37,7 +37,7 @@ class CreateCategory extends Component{
     protected $rules = [
         'createForm.name' => 'required',
         'createForm.slug' => 'required|unique:categories,slug', //Debe ser unico en la tabla categories campo slug
-        'createForm.image' => 'required|image|max:1024',
+        'createForm.image' => 'required|image|max:2024',
         'createForm.brands' => 'required'
     ];
 
@@ -95,12 +95,13 @@ class CreateCategory extends Component{
 
     public function edit(Category $category){
         $this->reset(['editImage']);
+        $this->resetValidation();
         $this->category = $category;
 
         $this->editForm['open'] = true;
         $this->editForm['name'] = $category->name;
         $this->editForm['slug'] = $category->slug;
-        $this->editForm['image'] = Storage::url($category->image);
+        $this->editForm['image'] = $category->image;
         $this->editForm['brands'] = $category->brands->pluck('id'); //Solo trae una marca 
     }
 
@@ -114,8 +115,18 @@ class CreateCategory extends Component{
         if($this->editImage){
             $rules['editImage'] = 'required|image|max:1024';
         }
-
         $this->validate($rules);
+
+        // Se elimina la imagen de la base de datos y se actualiza
+        if($this->editImage){
+            Storage::delete($this->editForm['image']);
+            $this->editForm['image'] = $this->editImage->store('categories');
+        }
+        $this->category->update($this->editForm);
+
+        $this->category->brands()->sync($this->editForm['brands']);
+        $this->reset(['editForm', 'editImage']);
+        $this->getCategories();
     }
 
     public function delete(Category $category){
