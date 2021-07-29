@@ -1,4 +1,5 @@
 <div>
+    {{-- Create category section --}}
     <x-jet-form-section submit="save" class="mb-6">
         <x-slot name="title">
             Crear categoria
@@ -52,6 +53,7 @@
         </x-slot>
     </x-jet-form-section>
 
+    {{-- Edit and delete section --}}
     <x-jet-action-section>
         <x-slot name="title">
             Lista de categorías
@@ -68,15 +70,18 @@
                     </tr>
                 </thead>
 
+                {{-- Buttons --}}
                 <tbody class="divide-y divide-gray-300">
                     @foreach ($categories as $category)
                         <tr>
+                            {{-- Name --}}
                             <td class="py-2">
                                 <a href="{{route('admin.categories.show', $category)}}" class="py-2">
                                     <span class="uppercase underline hover:text-blue-600">{{ $category->name }}</span>
                                 </a>
                             </td>
 
+                            {{-- Edit and delete buttons --}}
                             <td class="py-2">
                                 <div class="flex divide-x divide-gray-300 font-semibold">
                                     <a class="pr-2 hover:text-blue-600 cursor-pointer"
@@ -92,6 +97,7 @@
         </x-slot>
     </x-jet-action-section>
 
+    {{-- Update section --}}
     <x-jet-dialog-modal wire:model="editForm.open">
         <x-slot name="title">
             Editar categoría
