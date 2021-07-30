@@ -14,13 +14,24 @@ class CategoryFilter extends Component
     public $category, $subcategoria, $marca;
 
     public $view = 'list';
-    
-    public function render(){
-        // $products = $this->category->products()
-        //             ->where('status', 2)
-        //             ->paginate(20);
 
-        // He separado la consulta y la coleccion para poder realizar consultas dinamicas 
+    protected $queryString = ['subcategoria', 'marca'];
+    
+    public function limpiar(){
+        $this->reset(['subcategoria', 'marca', 'page']);
+    }
+
+    public function updatedSubcategoria(){
+        $this->resetPage();
+    }
+
+    public function updatedMarca(){
+        $this->resetPage();
+    }
+
+    public function render(){
+        // He separado la consulta y la coleccion para poder realizar consultas dinamicas
+
         // CONSULTA
         $productsQuery = Product::query()->WhereHas('subcategory.category', function(Builder $query){
             $query->where('id', $this->category->id); //id que coincida con el id de la categoria
@@ -32,7 +43,7 @@ class CategoryFilter extends Component
         // Si tengo agregado algo almacenado en subcategoria agregará un filtro a la relación subcategory y mostrará los productos relacionados a dichas subcategorias
         if ($this->subcategoria) {
             $productsQuery = $productsQuery->whereHas('subcategory', function(Builder $query){
-                $query->where('name', $this->subcategoria);
+                $query->where('slug', $this->subcategoria);
             }); //Este filtro se aplicará solamente si hay algo en la propiedad subcategory
         }
         if ($this->marca) {
@@ -48,7 +59,5 @@ class CategoryFilter extends Component
         return view('livewire.category-filter', compact('products'));
     }
 
-    public function limpiar(){
-        $this->reset(['subcategoria', 'marca']);
-    }
+    
 }
