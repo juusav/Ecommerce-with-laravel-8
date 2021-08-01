@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Livewire\Admin\BrandComponent;
 use App\Http\Livewire\Admin\CreateProduct;
 use App\Http\Livewire\Admin\EditProduct;
 use App\Http\Livewire\Admin\ShowCategory;
@@ -16,3 +17,5 @@ Route::post('products/{product}/files', [ProductController::class, 'files'])->na
 
 Route::get('categories', [CategoryController::class, 'index'])->name('admin.categories.index');
 Route::get('categories/{category}', ShowCategory::class)->name('admin.categories.show');
+
+Route::get('brands', BrandComponent::class)->name('admin.brand.index');

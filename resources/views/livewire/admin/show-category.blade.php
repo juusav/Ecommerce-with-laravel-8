@@ -69,7 +69,7 @@
         </x-slot>
     </x-jet-form-section>
 
-    {{-- Edit and delete section --}}
+    {{-- show subcategories and Edit and delete section --}}
     <x-jet-action-section>
         <x-slot name="title">
             Lista de subcategorías
