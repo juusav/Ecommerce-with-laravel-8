@@ -175,9 +175,36 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-danger-button wire:click="update" wire:loading.attr="disabled" wire:target="editImage, update">
+            <x-jet-danger-button wire:click="update" wire:loading.attr="disabled" wire:target="update">
                 Actualizar
             </x-jet-danger-button>
         </x-slot>
     </x-jet-dialog-modal>
+
+    @push('script')
+        <script>
+            Livewire.on('deleteSubcategory', subcategoryId => {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        Livewire.emitTo('admin.show-category', 'delete', subcategoryId)
+
+                        Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                        )
+                    }
+                })
+            });
+        </script>
+    @endpush
 </div>
