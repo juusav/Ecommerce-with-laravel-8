@@ -9,11 +9,11 @@ use Illuminate\Support\Str;
 
 class ShowCategory extends Component{
 
-    public $category, $subcategories;
+    public $category, $subcategories, $subcategory;
 
     protected $rules = [
         'createForm.name' => 'required',
-        'createForm.slug' => 'required|unique:categories,slug', //Debe ser unico en la tabla categories campo slug
+        'createForm.slug' => 'required|unique:subcategories,slug', //Debe ser unico en la tabla categories campo slug
         'createForm.color' => 'required',
         'createForm.size' => 'required',
     ];
@@ -24,6 +24,14 @@ class ShowCategory extends Component{
     ];
 
     public $createForm = [
+        'name' => null,
+        'slug' => null,
+        'color' => false,
+        'size' => false,
+    ];
+
+    public $editForm = [
+        'open' => false,
         'name' => null,
         'slug' => null,
         'color' => false,
@@ -45,10 +53,19 @@ class ShowCategory extends Component{
 
     public function save(){
         $this->validate();
+        $this->category->subcategories()->create($this->createForm);
+
+        $this->reset('createForm');
+        $this->getSubcategories();
     }
 
     public function edit(Subcategory $subcategory){
-         
+        $this->editForm['open'] = true;
+
+        $this->editForm['name'] = $subcategory->name;
+        $this->editForm['slug'] = $subcategory->slug;
+        $this->editForm['color'] = $subcategory->color;
+        $this->editForm['size'] = $subcategory->size;
     }
 
     public function render(){
