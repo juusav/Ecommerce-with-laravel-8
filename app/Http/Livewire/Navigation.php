@@ -7,8 +7,8 @@ use App\Models\Category;
 
 class Navigation extends Component
 {
-    public function render()
-    {
+    public function render(){
+        
         $categories = Category::all();
         return view('livewire.navigation', compact('categories'));
     }

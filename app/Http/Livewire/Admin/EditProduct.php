@@ -35,11 +35,9 @@ class EditProduct extends Component{
         $this->product = $product;
         $this->categories = Category::all();
         $this->category_id = $product->subcategory->category->id;
-
         $this->subcategories = Subcategory::where('category_id', $this->category_id)->get();
-
         $this->slug = $this->product->slug;
-
+        
         $this->brands = Brand::whereHas('categories', function(Builder $query){
             $query->where('category_id', $this->category_id);
         })->get();
@@ -55,11 +53,10 @@ class EditProduct extends Component{
 
     public function updatedCategoryId($value){
         $this->subcategories = Subcategory::where('category_id', $value)->get(); 
+        
         $this->brands = Brand::whereHas('categories', function(Builder $query) use ($value){
             $query->where('category_id', $value);
         })->get();
-
-        // $this->reset(['subcategory_id', 'brand_id']);
         $this->product->subcategory_id = "";
         $this->product->brand_id = "";
     }

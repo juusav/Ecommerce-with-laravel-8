@@ -94,8 +94,10 @@ class CreateCategory extends Component{
     }
 
     public function edit(Category $category){
+        //Refrescar para que no se muestre la validacion en otro modal de edicion
         $this->reset(['editImage']);
         $this->resetValidation();
+        
         $this->category = $category;
 
         $this->editForm['open'] = true;

@@ -19,6 +19,7 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
         <h1 class="text-3xl text-center font-semibold mb-8">Editar producto</h1>
 
+        {{-- upload new images --}}
         <div class="mb-4" wire:ignore>
             <form action="{{route('admin.products.files', $product)}}"
                 method="POST"
@@ -102,7 +103,6 @@
 
                 <x-jet-input-error for="slug" />
             </div>
-
             {{-- Description --}}
             <div class="mb-4">
                 {{-- El metodo name está renderizando la página cada vez que surge un cambio y este div se ve afectado. wire:ignore ignora ese proceso --}}
@@ -163,6 +163,7 @@
                     </div>
                 @endif
             @endif
+            
             {{-- update product button --}}
             <div class="flex justify-end items-center mt-4">
                 <x-jet-action-message class="mr-3" on="saved">
