@@ -1,8 +1,11 @@
 # Ecommerce with Laravel 8, livewire and tailwind.
 
-Show dummy data              |  Show categories and subcategories 
-:---------------------------:|:-------------------------: 
-![](https://github-images-jusav.s3.eu-central-1.amazonaws.com/ecommerce-laravel8.png)| 
+Show dummy data
+:---------------------------:
+![](https://github-images-jusav.s3.eu-central-1.amazonaws.com/ecommerce-laravel8.png)
+
+Show categories and subcategories 
+:-------------------------: 
 ![](https://github-images-jusav.s3.eu-central-1.amazonaws.com/ecommerce-laravel8-2.png)
 
 Show category products 
@@ -12,9 +15,12 @@ Show category products
 
 <h3>When you see the details of the products, you can add this product to the shopping cart. </h3>
 
-Details screen | Authentication 
-:-------------:|:--------------:
-![](https://github-images-jusav.s3.eu-central-1.amazonaws.com/ecommerce-laravel8-5.png) |
+Details screen
+:-------------:
+![](https://github-images-jusav.s3.eu-central-1.amazonaws.com/ecommerce-laravel8-5.png)
+
+Authentication
+:--------------:
 ![](https://github-images-jusav.s3.eu-central-1.amazonaws.com/ecommerce-laravel8-6.png)
 
 After the auth you will see all the products you have added to finalize the purchase
