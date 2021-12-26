@@ -1,6 +1,6 @@
 # Ecommerce with Laravel 8, livewire and tailwind.
 
-Show dummy data | Show categories and subcategories 
+Show dummy data      |       Show categories and subcategories 
 :------------------:|:-------------------------: 
 ![](https://github-images-jusav.s3.eu-central-1.amazonaws.com/ecommerce-laravel8.png)| 
 ![](https://github-images-jusav.s3.eu-central-1.amazonaws.com/ecommerce-laravel8-2.png)
