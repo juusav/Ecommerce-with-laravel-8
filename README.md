@@ -27,3 +27,7 @@ After the auth you will see all the products you have added to finalize the purc
 :-------------------------:
 ![](https://github-images-jusav.s3.eu-central-1.amazonaws.com/ecommerce-laravel8-7.png) 
 
+
+Admin area
+:---------:
+![](https://github-images-jusav.s3.eu-central-1.amazonaws.com/ecommerce-laravel8-8.png)
