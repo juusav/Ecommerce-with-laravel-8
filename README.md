@@ -3,6 +3,7 @@
 # Ecommerce with Laravel 8 🛒📱
 
 <h3>Some features:</h3>
+Modern design |            |
 :-------------------------:|:-------------------------:|:-------------------------:
 ![]("https://github-images-jusav.s3.eu-central-1.amazonaws.com/ecommerce-laravel8.png")![]("https://github-images-jusav.s3.eu-central-1.amazonaws.com/ecommerce-laravel8-2.png")![]("https://github-images-jusav.s3.eu-central-1.amazonaws.com/ecommerce-laravel8-3.png")
 <ul>
