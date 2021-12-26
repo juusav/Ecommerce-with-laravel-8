@@ -4,10 +4,14 @@
 
 <h3>Some features:</h3>
 <ul>
-  <li>Responsive design</li>
+  <li>Modern design</li>
+    <p align="center">
+        <img src="https://github-images-jusav.s3.eu-central-1.amazonaws.com/ecommerce-laravel8.png" />
+        <img src="https://github-images-jusav.s3.eu-central-1.amazonaws.com/ecommerce-laravel8-2.png" />
+        <img src="https://github-images-jusav.s3.eu-central-1.amazonaws.com/ecommerce-laravel8-3.png" />
+    </p>
   <li>Admin area</li>
   <li>Authentication</li>
   <li>Shopping cart area</li>
   <li>Easy navigation</li>
-  <li>Modern design</li>
 </ul>
